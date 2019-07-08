@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 module.exports = {
   // 指定入口文件
   // 这里我们在src文件夹下创建一个index.ts
-  entry: "./src/index.ts",
+  entry: "./src/index.tsx",
   // 指定输出文件名
   output: {
     filename: "main.js"

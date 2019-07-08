@@ -3,9 +3,22 @@
     "tslint:recommended"
   ],
   "rules": {
-    "interface-name": [true, "never-prefix"],
+    "interface-name": [
+      true,
+      "never-prefix"
+    ],
     "no-empty-interface": true,
-    "semicolon": [true, "never"],
-    "object-literal-sort-keys": [false],
-  }
+    "semicolon": [
+      true,
+      "never"
+    ],
+    "quotemark": [
+      true,
+      "single",
+      "jsx-double"
+    ]
+  },
+  "ordered-imports": [
+    "false"
+  ]
 }
