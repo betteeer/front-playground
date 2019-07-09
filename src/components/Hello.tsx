@@ -9,7 +9,6 @@ export const Hello = (props: HelloProps) => {
     <div>
       <Button type="primary">2</Button>
       <h1>Hello from {props.compiler} and {props.framework}!</h1>
-
     </div>
   )
 }
