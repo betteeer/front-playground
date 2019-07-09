@@ -16,9 +16,7 @@
       true,
       "single",
       "jsx-double"
-    ]
+    ],
+    "ordered-imports": false
   },
-  "ordered-imports": [
-    "false"
-  ]
 }
