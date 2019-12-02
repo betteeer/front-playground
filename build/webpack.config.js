@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-
+const tsImportPluginFactory = require('ts-import-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   // 指定入口文件
   // 这里我们在src文件夹下创建一个index.ts
@@ -21,8 +22,60 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: "ts-loader",
+        loader: [
+          'babel-loader',
+          {
+            loader: require.resolve('ts-loader'),
+            options: {
+              // disable type checker - we will use it in fork plugin
+              transpileOnly: true,
+              getCustomTransformers: () => ({
+                before: [tsImportPluginFactory( /** options */)]
+              }),
+              compilerOptions: {
+                module: 'es2015'
+              }
+            }
+          }
+        ],
         exclude: /node_modules/
+      },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          use: [{
+            loader: 'css-loader',
+          }],
+          fallback: 'style-loader',
+        }),
+      },
+      {
+        test: /\.less$/,
+        use: ExtractTextPlugin.extract({
+          use: [{
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: true,
+              namedExport: true,
+              camelCase: true,
+              minimize: true,
+              localIdentName: '[path][name]__[local]--[hash:base64:5]',
+            },
+          },
+          {
+            loader: 'less-loader',
+            options: {
+              javascriptEnabled: true,
+              //modifyVars: themeVariables,
+            },
+          }],
+          fallback: 'style-loader',
+        }),
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif)$/,
+        use: 'url-loader'
       }
     ]
   },
@@ -46,6 +99,8 @@ module.exports = {
     // 这里我们指定编译需要用模板，模板文件是./src/template/index.html，所以接下来我们要创建一个index.html文件
     new HtmlWebpackPlugin({
       template: "./src/template/index.html"
-    })
+    }),
+    new ExtractTextPlugin("styles.css"),
+
   ]
 };
