@@ -1,4 +1,5 @@
 {
+  "defaultSeverity": "error",
   "extends": [
     "tslint:recommended"
   ],
@@ -16,9 +17,7 @@
       true,
       "single",
       "jsx-double"
-    ]
-  },
-  "ordered-imports": [
-    "false"
-  ]
+    ],
+    "ordered-imports": false
+  }
 }
