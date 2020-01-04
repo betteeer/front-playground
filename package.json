@@ -11,11 +11,18 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "proxy": {
+    "/*": {
+      "secure": false,
+      "target": "http://127.0.0.1:8081",
+      "changeOrigin": true
+    }
+  },
   "dependencies": {
     "@babel/core": "7.4.3",
     "@types/react": "16.8.14",
     "@types/react-dom": "16.8.4",
-    "antd": "3.17.0",
+    "antd": "3.21.0",
     "babel-loader": "^7.1.5",
     "babel-plugin-import": "^1.7.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
@@ -25,6 +32,7 @@
     "cross-env": "^5.2.0",
     "css-loader": "^3.0.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "fetch": "^1.1.0",
     "html-webpack-plugin": "^3.2.0",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
@@ -32,6 +40,7 @@
     "react-dev-utils": "^9.0.1",
     "react-dom": "^16.8.6",
     "style-loader": "^0.23.1",
+    "ts-import-plugin": "^1.6.1",
     "ts-loader": "^6.0.4",
     "typescript": "^3.5.2",
     "url-loader": "^2.0.1",
@@ -40,6 +49,6 @@
     "webpack-dev-server": "^3.7.2"
   },
   "devDependencies": {
-    "babel-loader": "^7.1.5"
+    "babel-core": "^6.26.3"
   }
 }
