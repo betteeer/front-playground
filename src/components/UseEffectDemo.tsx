@@ -5,7 +5,6 @@ import { useFetchApi } from './hooks/useFetchApi';
 function UseEffectDemo() {
   const [query, setQuery] = useState('1')
   const { data, isLoading, doSearch } = useFetchApi(query, { hits: [] })
-  console.log(data)
   return (
     <>
       <h1>UseEffectDemo</h1>

@@ -25,7 +25,9 @@ const dataFetchReducer = (state, action) => {
       throw new Error()
   }
 }
-export const useFetchApi = (initialSearch: string, initailData: any[]) => {
+// 找保单，问保单的现金价值
+// 银行业保险业监督协会
+export const useFetchApi = (initialSearch: string, initailData: { hits: any[] }) => {
   const [search, setSearch] = useState(initialSearch)
   const [state, dispatch] = useReducer(dataFetchReducer, {
     isLoading: false,
